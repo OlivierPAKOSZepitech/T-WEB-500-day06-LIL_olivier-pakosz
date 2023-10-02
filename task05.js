@@ -12,4 +12,4 @@ function range(start, end, step) {
   return array;
 }
 
-module.exports = range;
+module.exports = { range }
