@@ -5,7 +5,7 @@ export function objectsDeeplyEqual(cmp1, cmp2) {
   } else if (
     typeof cmp1 != "object" ||
     typeof cmp2 != "object" ||
-    typeof cmp1 == null ||
+    cmp1 == null ||
     cmp2 == null
   ) {
     return false;
