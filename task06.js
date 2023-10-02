@@ -13,6 +13,10 @@ export function objectsDeeplyEqual(cmp1, cmp2) {
   const keys1 = Object.keys(cmp1);
   const keys2 = Object.keys(cmp2);
 
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+
   for (const element of keys1) {
     if (!objectsDeeplyEqual(cmp1[element], cmp2[element])) {
       return false;
