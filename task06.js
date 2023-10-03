@@ -1,24 +1,28 @@
 export function objectsDeeplyEqual(cmp1, cmp2) {
-  if (cmp1 === cmp2) return true;
-  else if (cmp1.length != cmp2.length) {
-    return false;
-  } else if (
-    typeof cmp1 != "object" ||
-    typeof cmp2 != "object" ||
-    cmp1 == null ||
-    cmp2 == null
-  ) {
+  if (cmp1 === cmp2) {
+    return true;
+  }
+
+  if (typeof cmp1 !== "object" || typeof cmp2 !== "object") {
     return false;
   }
-  const keys1 = Object.keys(cmp1);
-  const keys2 = Object.keys(cmp2);
 
+  if (cmp1 === null || cmp2 === null) {
+    return false;
+  }
+
+  var keys1 = Object.keys(cmp1);
+  var keys2 = Object.keys(cmp2);
   if (keys1.length !== keys2.length) {
     return false;
   }
 
-  for (const element of keys1) {
-    if (!objectsDeeplyEqual(cmp1[element], cmp2[element])) {
+  for (let i = 0; i < keys1.length; i++) {
+    var key = keys1[i];
+    if (
+      !cmp2.hasOwnProperty(key) ||
+      !objectsDeeplyEqual(cmp1[key], cmp2[key])
+    ) {
       return false;
     }
   }
